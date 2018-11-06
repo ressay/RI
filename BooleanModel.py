@@ -1,8 +1,8 @@
-import RI.basicMethods as bm
+import basicMethods as bm
 
 
-def getDocScores(query="first and king or memories and",path="TPRI/D",N=4):
-    freq = bm.generateReversedFile(path,N)
+def getDocScores(freq,query,N):
+    # freq = bm.generateReversedFile(path,N)
 
 
     tab = query.split()
@@ -28,7 +28,5 @@ def getDocScores(query="first and king or memories and",path="TPRI/D",N=4):
             print("wrong query format")
             break
 
-    print(docList)
+    # print(docList)
     return docList
-
-print(getDocScores())
