@@ -1,3 +1,6 @@
+from PyQt4 import QtGui
+
+import ProbaModel
 import VectorialModel
 import basicMethods as bm
 from BooleanModel import getDocScores
@@ -37,13 +40,35 @@ def formatWeightsBoolean(freqs,query,N):
     docs = getDocScores(freqs,query,N)
     for i,doc in enumerate(docs):
         if doc:
-            output.append([doc])
+            output.append([i+1])
+    if not len(output):
+        output.append(["aucun document!"])
     return output
 
 def formatWeightsVec(freqs,query,N,method):
     output = []
-    docs = VectorialModel.getDocScores(freqs,query,N)
-    for i,doc in enumerate(docs):
-        output.append([i,doc])
+    docs = VectorialModel.getDocScores(freqs,query,N,method)
+    docs = [(i, doc) for i, doc in enumerate(docs)]
+    docs.sort(key=lambda x: x[1],reverse=True)
+    for i,doc in docs:
+        output.append([i+1,doc])
+    return output
+
+def formatWeightsProb(freqs,query,N,method):
+    output = []
+    docs = VectorialModel.getDocScores(freqs,query,N,method)
+    docs = [(i,doc) for i,doc in enumerate(docs)]
+    docs.sort(key=lambda x:x[1],reverse=True)
+    for i,doc in docs:
+        output.append([QtGui.QCheckBox("document non pertinent"),i+1,doc])
+    return output
+
+def formatWeightsProb2(freqs,query,N,pertinent):
+    output = []
+    docs = ProbaModel.getDocScores(freqs,query,N,pertinent)
+    docs = [(i,doc) for i,doc in enumerate(docs)]
+    docs.sort(key=lambda x:x[1],reverse=True)
+    for i,doc in docs:
+        output.append([QtGui.QCheckBox("document non pertinent"),i+1,doc])
     return output
 

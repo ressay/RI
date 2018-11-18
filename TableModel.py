@@ -19,8 +19,11 @@ class MyTableModel(QAbstractTableModel):
 
     def columnCount(self, parent):
         if len(self.arraydata) > 0:
-            return len(self.arraydata[0])
+            return len(self.headerdata)
         return 0
+
+    def getData(self,row,column):
+        return self.arraydata[row][column]
 
     def data(self, index, role):
         if not index.isValid():
@@ -36,6 +39,12 @@ class MyTableModel(QAbstractTableModel):
         if orientation == Qt.Horizontal and role == Qt.DisplayRole:
             return QVariant(self.headerdata[col])
         return QVariant()
+
+    def addRow(self, row):
+        self.arraydata.append(row)
+
+    def clear(self):
+        self.arraydata = []
 
     def sort(self, Ncol, order):
         """

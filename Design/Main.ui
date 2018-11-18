@@ -24,11 +24,11 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>Terme</string>
      </attribute>
      <widget class="QLabel" name="termLabel">
       <property name="geometry">
@@ -69,7 +69,7 @@
     </widget>
     <widget class="QWidget" name="tab2">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Document</string>
      </attribute>
      <widget class="QPushButton" name="docButton">
       <property name="geometry">
@@ -110,7 +110,7 @@
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Page</string>
+      <string>Booleen</string>
      </attribute>
      <widget class="QPushButton" name="boolButton">
       <property name="geometry">
@@ -145,13 +145,13 @@
        </rect>
       </property>
       <property name="text">
-       <string>Boolean</string>
+       <string>Booleen</string>
       </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_13">
      <attribute name="title">
-      <string>Page</string>
+      <string>Vectoriel</string>
      </attribute>
      <widget class="QPushButton" name="vecButton">
       <property name="geometry">
@@ -186,7 +186,84 @@
        </rect>
       </property>
       <property name="text">
-       <string>Vectorial</string>
+       <string>Vectoriel</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="vecCombo">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>40</y>
+        <width>151</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Probabiliste</string>
+     </attribute>
+     <widget class="QPushButton" name="probButton">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>80</y>
+        <width>71</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>OK</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="probLabel">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>10</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Probabiliste</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="probEdit">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>40</y>
+        <width>201</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="probCombo">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>40</y>
+        <width>151</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="probButton2">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>440</y>
+        <width>141</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>requête proba</string>
       </property>
      </widget>
     </widget>
