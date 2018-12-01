@@ -1,0 +1,8 @@
+5c5
+< # Created by: PyQt4 UI code generator 4.12.1
+---
+> # Created by: PyQt4 UI code generator 4.11.4
+106c106
+<         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
+---
+>         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 20))
