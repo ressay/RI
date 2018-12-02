@@ -719,12 +719,72 @@ minimum height=2em]
 	\end{figure}
 	
 \chapter{Conclusion générale}
-	\section{Comparaison des différentes méthodes}
+	\section{Analyse et comparaison}
 	\paragraph{}
 	Aux termes de ce projet, nous avons pu donc analyser les différentes méthodes 
 	proposées, les implémenter nous a permis de mieux les comprendre et de percevoir
-	leurs limites respectives,
-	%TODO finish this shit bruh  
+	leurs limites respectives.
+	\paragraph{}
+	Tout d'abord l'ajout d'un méthode d'indexation par fichier inverse à grandement
+	diminué la complexité d'accès aux documents de la collections ainsi qu'à leur
+	contenu. À ça s'ajoute l'utilisation de \textbf{stop\_words} pour éliminer les
+	termes qui n'ont pas une valeur informationnelle, et donc ne sont pas présent
+	dans l'indexe, en conséquent , la vitesse et la précision (rappel)de la 
+	recherche sont accrus.
+	\paragraph{}
+	Le cœur d'un \textbf{SRI} \footnote{\textbf{S}ystème \textbf{R}recherche d'\textbf{I}nformation}
+	reste néanmoins le modèle choisi pour le traitement d'une requête, de ce fait
+	la performance du système dépend du choix de ce dernier, après l'implémentation
+	des modèles, nous avons comparé leur performances (principalement la précision
+	et le rappel et la rapidité d'exécution) :
+	\paragraph{}
+	Le modèle booléen, qui est le plus simple des trois, se veut être simple et
+	intuitif, les principales forces de ce dernier sont sa facilité d'implémentation
+	et sa grande rapidité d'exécution, en contre partie, la correspondance
+	entre la requête et le document est très stricte, et ne diffère pas d'un 
+	document pertinent à un autre, cela rend la tâche plus difficile à l'utilisateur
+	quand il choisira quel document choisir. Pour palier à ce défaut le modèle 
+	vectoriel à été introduit.
+	\paragraph{}
+	Le modèle vectoriel, un peu plus avancé que son prédécesseur, tente de discerner
+	entre les documents pertinents, en introduisant la notion de similarité de
+	document par rapport à une requête, ainsi même la formulation de cette dernière
+	devient plus simple, et n'oblige pas l'utilisateur à avoir une idée précise de
+	quels termes utiliser ou ne pas utiliser. Tout le challenge se trouve donc
+	dans le choix de la mesure de similarité.
+	
+	\paragraph{}
+	Une approche moins déterministe et plus probabiliste à vu le jour quand le 
+	modèle probabiliste à été conçu, ce modèle se base sur un interprétation 
+	stochastique du processus du choix de documents pertinents, en effet dans le
+	monde réel, à l'instant de la formulation de la requête, le besoin de l'utilisateur
+	est incertain, cette incertitude se retrouve aussi dans la manière dont
+	les informations sont représentées, ce qui à poussé au choix de la théorie 
+	des probabilité comme base théorique de ce modèle, afin de mesurer cette 
+	quantité d'incertitude. Le modèle dépend grandement de deux facteurs : 
+	\begin{itemize}
+		\item L'hypothèse d'indépendance entre les termes dans un même document(alors 
+		que ce n'est pas toujours le cas).
+		\item Le chois de l'échantillon d'apprentissage doit être très bien étudié, car
+		ce dernier représentera le concept de pertinence d'un document à travers
+		tout le modèle.
+	\end{itemize}
+	Malgré ses restrictions, le modèle probabiliste de base donne de très bon résultats
+	en terme de rappel et précision, cela en fait donc un bon point de départ pour
+	le développement d'autres modèles plus performants et moins restreints.
+	
+	\section{Conclusion}
+	\paragraph{}
+	La recherche d’information présente des modèles assez intéressants qui ont pour fonction
+	de permettre à l'utilisateur d'accéder à des documents qui contribuent à combler son besoin
+	d'information, exprimé sous forme de requête, qui motive sa recherche. Ainsi le système
+	peut être vu par l’utilisateur comme un instrument de prédiction de la pertinence des
+	documents d’un corpus par rapport à sa requête.
+	\par 
+	De ce fait, la RI est un pilier du domaine de l’intelligence artificielle. Il est donc
+	nécessaire d’améliorer ses résultats en s’intéressant aux besoins non exprimés de
+	l’utilisateur pour augmenter la pertinence utilisateur/ machine.
+	
 \bibliographystyle{ieeetr}
 \bibliography{ref}
 \end{document}}
