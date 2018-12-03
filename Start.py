@@ -12,7 +12,7 @@ from VectorialModel import scoreInnerProduct, scoreCoefDice, scoreCosin, scoreJa
 from check import checkTable
 import subprocess
 class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
-    path = "TPRI/D"
+    path = "Ry/D"
     N = 4
     def __init__(self, parent=None):
         self.models = {}
