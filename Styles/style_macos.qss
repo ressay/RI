@@ -138,7 +138,7 @@ QHeaderView::section {
 
 QComboBox{
     background-color: #F1F1F1;
-    border-radius: 8px;
+    border-radius: 123px;
 }
 
 QComboBox::drop-down {
