@@ -2,7 +2,7 @@ import string
 from math import log10
 
 N = 4
-listcar = ['.', ',', '!', '?',"'"]
+listcar = {'.', ',', '!', '?'}
 stoplist = open('stopwords_fr.txt', 'r')
 stoplist = stoplist.read()
 stoplist = stoplist.lower()
