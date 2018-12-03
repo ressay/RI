@@ -1,0 +1,1 @@
+il existe plusieurs modéles de recherche d'information, chaque moteur de recherche est developé sur la base d'un ou plusieurs modéles de recherche.

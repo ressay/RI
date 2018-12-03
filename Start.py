@@ -10,7 +10,7 @@ from check import checkTable
 import subprocess
 
 class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
-    path = "prof/D"
+    path = "Ry/D"
     N = 4
     def __init__(self, parent=None):
         self.models = {}
@@ -20,7 +20,9 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
         self.tableViews = {}
 
         self.freqs = bm.generateReversedFile(self.path,self.N)
+        print(self.freqs)
         self.weights = bm.getWeights(self.freqs,self.N)
+        print(self.weights)
         self.methodsMap = {
             "produit interne" : scoreInnerProduct,
             "coefficient dice":scoreCoefDice,
