@@ -117,7 +117,7 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
             return
         self.resetItems("term")
         self.addItemsToList("term",buim.formatDocWeightsOutput(self.weights,self.freqs,
-                                                               str(self.termEdit.toPlainText()),self.N))
+                                            str(self.termEdit.toPlainText().toUtf8()),self.N))
 
     def docClickedCallBack(self):
         print (self.docEdit.toPlainText())
@@ -125,7 +125,7 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
             return
         self.resetItems("doc")
         self.addItemsToList("doc",buim.formatWeightsPerDocOutput(self.weights,self.freqs,
-                                                               int(self.docEdit.toPlainText()),self.N))
+                                            int(self.docEdit.toPlainText().toUtf8()),self.N))
         print("finally")
 
     def boolClickedCallBack(self):
@@ -133,7 +133,7 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
             return
         self.resetItems("bool")
         self.addItemsToList("bool",buim.formatWeightsBoolean(self.freqs,
-                                                               str(self.boolEdit.toPlainText()),self.N))
+                                            str(self.boolEdit.toPlainText().toUtf8()),self.N))
 
     def vecClickedCallBack(self):
         if self.vecEdit.toPlainText() == "":
@@ -142,7 +142,7 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
         method = str(self.vecCombo.currentText())
         method = self.methodsMap[method]
         self.addItemsToList("vec",buim.formatWeightsVec(self.freqs,
-                                    str(self.vecEdit.toPlainText()),self.N,method))
+                                    str(self.vecEdit.toPlainText().toUtf8()),self.N,method))
 
     def probClickedCallBack(self):
         if self.probEdit.toPlainText() == "":
@@ -150,7 +150,7 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
         self.resetItems("prob")
         method = str(self.probCombo.currentText())
         method = self.methodsMap[method]
-        self.savedProbaText = str(self.probEdit.toPlainText())
+        self.savedProbaText = str(self.probEdit.toPlainText().toUtf8())
         self.addItemsToList("prob",buim.formatWeightsProb(self.freqs,
                                     self.savedProbaText,self.N,method))
         self.probButton2.setVisible(True)
