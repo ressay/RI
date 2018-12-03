@@ -9,8 +9,10 @@ def scoreInnerProduct(freq,fquery,words):
 
 def scoreCoefDice(freq,fquery,words):
     up = 2*scoreInnerProduct(freq,fquery,words)
+    print(freq)
     # words = set([w for w in freq]+[w for w in fquery])
     down = sum([f(fquery,w)*f(fquery,w)+f(freq,w)*f(freq,w) for w in words])
+    print("total ",down)
     return up/down
 
 def scoreCosin(freq,fquery,words):

@@ -1,3 +1,6 @@
+from docutils.nodes import table
+
+from PyQt4.QtCore import Qt
 
 import Main
 from PyQt4 import QtGui, QtCore
@@ -8,9 +11,8 @@ from TableModel import MyTableModel
 from VectorialModel import scoreInnerProduct, scoreCoefDice, scoreCosin, scoreJaccard
 from check import checkTable
 import subprocess
-
 class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
-    path = "prof/D"
+    path = "TPRI/D"
     N = 4
     def __init__(self, parent=None):
         self.models = {}
@@ -21,6 +23,7 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
 
         self.freqs = bm.generateReversedFile(self.path,self.N)
         self.weights = bm.getWeights(self.freqs,self.N)
+        print(self.weights)
         self.methodsMap = {
             "produit interne" : scoreInnerProduct,
             "coefficient dice":scoreCoefDice,
@@ -31,6 +34,13 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
         methods = [self.tr(st) for st in methods]
         self.vecCombo.addItems(methods)
         self.probCombo.addItems(methods)
+
+
+        #
+        # self.vecCombo.setEditable(True)
+        # self.vecCombo.lineEdit().setAlignment(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignHCenter)
+        # self.vecCombo.setEditable(False)
+
         self.tabs = {
             "term":self.tab,
             "doc":self.tab2,
@@ -52,6 +62,9 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
             "vec": MyTableModel([],self.headers["vec"]),
             "prob": checkTable(self,[],self.headers["prob"])
         }
+
+
+
         self.initTabs()
         self.initButtons()
         self.savedProbaText = ""
@@ -68,12 +81,19 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
         self.probButton2.setVisible(False)
         self.probButton2.setEnabled(False)
 
+        self.vecEdit.setAlignment( QtCore.Qt.AlignVCenter | QtCore.Qt.AlignHCenter)
+        self.termEdit.setAlignment( QtCore.Qt.AlignVCenter | QtCore.Qt.AlignHCenter)
+        self.boolEdit.setAlignment( QtCore.Qt.AlignVCenter | QtCore.Qt.AlignHCenter)
+        self.docEdit.setAlignment( QtCore.Qt.AlignVCenter | QtCore.Qt.AlignHCenter)
+        self.probEdit.setAlignment( QtCore.Qt.AlignVCenter | QtCore.Qt.AlignHCenter)
+
+
 
     def initTabs(self):
         for key in self.tabs:
             tableView = QtGui.QTableView(self.tabs[key])
             tableView.doubleClicked.connect(lambda x, key=key: self.tableClickedCallBack(x, key))
-            tableView.setGeometry(QtCore.QRect(10, 140, 621, 300))
+            tableView.setGeometry(QtCore.QRect(5, 210, 775, 250))
             tableView.setShowGrid(True)
             # tableView.setObjectName(Main._fromUtf8("t"))
             model = self.modelsList[key]
@@ -170,6 +190,7 @@ class MainApp(QtGui.QMainWindow, Main.Ui_MainWindow):
 def main():
     app = QtGui.QApplication(sys.argv)
     form = MainApp()
+    form.setStyleSheet(open("Styles/style_macos.qss").read())
     form.show()
     app.exec_()
 
